@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>COVID-19</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+       
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center mt-4">
+            <div class="container d-flex align-items-center flex-column">
+                <!--<!-- Masthead Avatar Image<img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />-->
+                <h1 class="masthead-heading text-uppercase mb-0">COVID-19</h1>
+              
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">School Data</p>
+            </div>
+        </header>
+		<div class="btn-group m-4">
+		  <button class="btn btn-primary btn-lg" type="button" disabled = 'true'>
+			Choose school
+		  </button>
+		  <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <div class="dropdown-menu">
+			<a class="dropdown-item" onclick = "setSchool('Grant High School')">Grant High School</a>
+			<a class="dropdown-item" onclick = "setSchool('Van Nuys High School')" >Van Nuys High School</a>
+			<a class="dropdown-item" onclick = "setSchool('Marco Antonio Firebaugh High School')" >Marco Antonio Firebaugh High School</a>
+		  </div>
+		</div>
+		<table class="table table-striped table-sm table-bordered mx-5">
+		  <thead>
+			<tr>
+			  <th scope="col"></th>
+			  <th scope="col"></th>
+			  <th scope="col"></th>
+			  <th scope="col"></th>
+
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">School name: </th>
+			  <td id="name"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Type: </th>
+			  <td id = "type"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Age: </th>
+			  <td>
+				<div class="col-lg-4 mr-auto">
+					<p> Min. Age</p>
+					<p id= "minAge"></p>
+				</div>
+			  </td>
+			  <td >
+				<div class="col-lg-4 mr-auto">
+					<p> Max Age</p>
+					<p id= "maxAge"></p>
+				</div>
+			  </td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Latitude: </th>
+			  <td id = "latitude" ></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Longitude: </th>
+			  <td id = "longitude" ></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Total enrollment: </th>
+			  <td id= "enroll"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Total staff: </th>
+			  <td id = "staff" ></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Address: </th>
+			  <td id = "address"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Race: </th>
+			  <td > 
+				<div class="col-lg-4 mr-auto">
+					<p> Asian</p>
+					<p id= "asian"></p>
+				</div>
+			  </td>
+			  <td>
+				<div class="col-lg-4 mr-auto">
+					<p> White</p>
+					<p id= "white"></p>
+				</div>
+			  </td>
+			  <td > 
+				<div class="col-lg-4 mr-auto">
+					<p> Hispanic</p>
+					<p id= "hispanic"></p>
+				</div>
+			  </td>
+			</tr>
+			<tr>
+			  <th scope="row">Square Area: </th>
+			  <td id = "area"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			<tr>
+			  <th scope="row">Area Case Rate: </th>
+			  <td id = "rate"></td>
+			  <td></td>
+			  <td></td>
+			</tr>
+			
+
+		  </tbody>
+		</table>
+		
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				<!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+				<form>
+					<div class="control-group">
+						<div class="form-group floating-label-form-group controls mb-0 pb-2">
+							<label>Frequency per day</label>Frequency per day<input class="form-control" id="frequency" type="text" placeholder="Frequency per day" required="required" data-validation-required-message="Please enter frequency per day" />
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="form-group floating-label-form-group controls mb-0 pb-2">
+							<label>Percentage wearing mask</label>Percentage wearing mask<input class="form-control" id="mask" type="text" placeholder="Percentage wearing mask" required="required" data-validation-required-message="Please enter percentage wearing mask." />
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+					<br />
+					<div class="form-group"><button class="btn btn-primary btn-xl" id="estimateButton" type="submit">Estimate</button></div>
+				</form>
+			</div>
+		</div>
+       
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container ">
+                <h2 class="page-section-heading text-center text-uppercase text-white">Result</h2>
+                <div class="row mt-5">
+                    <div class="col-lg-4 ml-auto">
+						<h3 class="lead">Total Mask :</h3>
+						<h4 id= 'totalMask' class="lead"></h4>
+					</div>
+                    <div class="col-lg-4 mr-auto">
+						<h3 class="lead">Risk index:</h3>
+						<h4 id= 'risk' class="lead"></h4>
+					</div>
+                </div>   
+            </div>
+       
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+		<script src="js/data.js"></script>
+		
+    </body>
+</html>
