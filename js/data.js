@@ -17,7 +17,26 @@ var totalMask = 200;
 var riskIndex = 20;
 var frequency=0;
 var maskPercentage= 0;
+var schoolList = ['','Grant High School','Van Nuys High School','Marco Antonio Firebaugh High School'];
 
+function setSchoolList(){
+	var myDiv = document.getElementById("schoolDiv");
+	var selectList = document.createElement("select");
+	selectList.setAttribute("id", "school");
+	selectList.setAttribute('onchange','setSchool(this)')
+	myDiv.appendChild(selectList);
+	
+	for (var i = 0; i < schoolList.length; i++) {
+		var option = document.createElement("option");
+		option.setAttribute("value", schoolList[i]);
+		option.text = schoolList[i];
+		option.value= schoolList[i];
+		selectList.appendChild(option);
+	}
+}
+
+
+setSchoolList()
 
 function updateData(){
 	document.getElementById("name").innerHTML = name;
@@ -47,6 +66,8 @@ function setResult(){
 	document.getElementById("risk").innerHTML = riskIndex;
 	document.getElementById("totalMask").innerHTML = totalMask;
 }
+
+
 $(document).ready(function() {
   $('#estimateButton').click(function(event) {
 	getData();
@@ -56,7 +77,7 @@ $(document).ready(function() {
 
 })
 
-function setSchool(school){
-	name = school;
+function setSchool(sel){
+	name = sel.options[sel.selectedIndex].value;
 	updateData();
 }
